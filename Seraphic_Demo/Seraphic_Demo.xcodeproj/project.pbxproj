@@ -7,23 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2045F7DD524632D9EC7EBE /* Pods_Seraphic_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99ADF3F7DBD522AB004CB467 /* Pods_Seraphic_Demo.framework */; };
+		DEC4AF602AC5F3EF003A35EE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF5F2AC5F3EF003A35EE /* Constant.swift */; };
+		DEC4AF632AC60070003A35EE /* NightStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC4AF622AC60070003A35EE /* NightStyle.json */; };
+		DEC4AF672AC74665003A35EE /* ShowDriverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF652AC74665003A35EE /* ShowDriverCollectionViewCell.swift */; };
+		DEC4AF682AC74665003A35EE /* ShowDriverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC4AF662AC74665003A35EE /* ShowDriverCollectionViewCell.xib */; };
+		DEC4AF6B2AC80978003A35EE /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF6A2AC80978003A35EE /* ExtensionUIView.swift */; };
+		DEC4AF792AC856D3003A35EE /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF782AC856D3003A35EE /* CustomInfoWindow.swift */; };
+		DEC4AF7C2AC86595003A35EE /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF7B2AC86595003A35EE /* EmployeeData.swift */; };
+		DEC4AF7F2AC866A7003A35EE /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF7E2AC866A7003A35EE /* ApiManager.swift */; };
 		DEF4B00E2AC5EFF4005052EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF4B00D2AC5EFF4005052EF /* AppDelegate.swift */; };
 		DEF4B0102AC5EFF4005052EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF4B00F2AC5EFF4005052EF /* SceneDelegate.swift */; };
-		DEF4B0122AC5EFF4005052EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF4B0112AC5EFF4005052EF /* ViewController.swift */; };
+		DEF4B0122AC5EFF4005052EF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF4B0112AC5EFF4005052EF /* MapViewController.swift */; };
 		DEF4B0152AC5EFF4005052EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEF4B0132AC5EFF4005052EF /* Main.storyboard */; };
 		DEF4B0172AC5EFF5005052EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEF4B0162AC5EFF5005052EF /* Assets.xcassets */; };
 		DEF4B01A2AC5EFF5005052EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEF4B0182AC5EFF5005052EF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B8A55CDF9DF7EF91D41347E /* Pods-Seraphic_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraphic_Demo.release.xcconfig"; path = "Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		99ADF3F7DBD522AB004CB467 /* Pods_Seraphic_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seraphic_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEC4AF5F2AC5F3EF003A35EE /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		DEC4AF622AC60070003A35EE /* NightStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NightStyle.json; sourceTree = "<group>"; };
+		DEC4AF652AC74665003A35EE /* ShowDriverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDriverCollectionViewCell.swift; sourceTree = "<group>"; };
+		DEC4AF662AC74665003A35EE /* ShowDriverCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDriverCollectionViewCell.xib; sourceTree = "<group>"; };
+		DEC4AF6A2AC80978003A35EE /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		DEC4AF782AC856D3003A35EE /* CustomInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
+		DEC4AF7B2AC86595003A35EE /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
+		DEC4AF7E2AC866A7003A35EE /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		DEF4B00A2AC5EFF4005052EF /* Seraphic_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seraphic_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEF4B00D2AC5EFF4005052EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEF4B00F2AC5EFF4005052EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DEF4B0112AC5EFF4005052EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DEF4B0112AC5EFF4005052EF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DEF4B0142AC5EFF4005052EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEF4B0162AC5EFF5005052EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEF4B0192AC5EFF5005052EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEF4B01B2AC5EFF5005052EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE497552A28B8F7B01CFB0A2 /* Pods-Seraphic_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraphic_Demo.debug.xcconfig"; path = "Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +51,71 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2045F7DD524632D9EC7EBE /* Pods_Seraphic_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043775A11AEAFA5F997CB8BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99ADF3F7DBD522AB004CB467 /* Pods_Seraphic_Demo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55A493678CBEDD16EEE47CE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE497552A28B8F7B01CFB0A2 /* Pods-Seraphic_Demo.debug.xcconfig */,
+				2B8A55CDF9DF7EF91D41347E /* Pods-Seraphic_Demo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DEC4AF642AC7460B003A35EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEC4AF652AC74665003A35EE /* ShowDriverCollectionViewCell.swift */,
+				DEC4AF662AC74665003A35EE /* ShowDriverCollectionViewCell.xib */,
+				DEC4AF782AC856D3003A35EE /* CustomInfoWindow.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEC4AF692AC8095E003A35EE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DEC4AF6A2AC80978003A35EE /* ExtensionUIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DEC4AF7A2AC86567003A35EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEC4AF7B2AC86595003A35EE /* EmployeeData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEC4AF7D2AC86694003A35EE /* Api manager */ = {
+			isa = PBXGroup;
+			children = (
+				DEC4AF7E2AC866A7003A35EE /* ApiManager.swift */,
+			);
+			path = "Api manager";
+			sourceTree = "<group>";
+		};
 		DEF4B0012AC5EFF3005052EF = {
 			isa = PBXGroup;
 			children = (
 				DEF4B00C2AC5EFF4005052EF /* Seraphic_Demo */,
 				DEF4B00B2AC5EFF4005052EF /* Products */,
+				55A493678CBEDD16EEE47CE2 /* Pods */,
+				043775A11AEAFA5F997CB8BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +130,19 @@
 		DEF4B00C2AC5EFF4005052EF /* Seraphic_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				DEC4AF7D2AC86694003A35EE /* Api manager */,
+				DEC4AF7A2AC86567003A35EE /* Model */,
+				DEC4AF692AC8095E003A35EE /* Extensions */,
+				DEC4AF642AC7460B003A35EE /* View */,
+				DEC4AF622AC60070003A35EE /* NightStyle.json */,
 				DEF4B00D2AC5EFF4005052EF /* AppDelegate.swift */,
 				DEF4B00F2AC5EFF4005052EF /* SceneDelegate.swift */,
-				DEF4B0112AC5EFF4005052EF /* ViewController.swift */,
+				DEF4B0112AC5EFF4005052EF /* MapViewController.swift */,
 				DEF4B0132AC5EFF4005052EF /* Main.storyboard */,
 				DEF4B0162AC5EFF5005052EF /* Assets.xcassets */,
 				DEF4B0182AC5EFF5005052EF /* LaunchScreen.storyboard */,
 				DEF4B01B2AC5EFF5005052EF /* Info.plist */,
+				DEC4AF5F2AC5F3EF003A35EE /* Constant.swift */,
 			);
 			path = Seraphic_Demo;
 			sourceTree = "<group>";
@@ -74,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEF4B01E2AC5EFF5005052EF /* Build configuration list for PBXNativeTarget "Seraphic_Demo" */;
 			buildPhases = (
+				C88922E4F746735CBB7F644E /* [CP] Check Pods Manifest.lock */,
 				DEF4B0062AC5EFF3005052EF /* Sources */,
 				DEF4B0072AC5EFF3005052EF /* Frameworks */,
 				DEF4B0082AC5EFF3005052EF /* Resources */,
+				48DF1F51777A7DF5F823C499 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,20 +209,70 @@
 			files = (
 				DEF4B01A2AC5EFF5005052EF /* LaunchScreen.storyboard in Resources */,
 				DEF4B0172AC5EFF5005052EF /* Assets.xcassets in Resources */,
+				DEC4AF632AC60070003A35EE /* NightStyle.json in Resources */,
+				DEC4AF682AC74665003A35EE /* ShowDriverCollectionViewCell.xib in Resources */,
 				DEF4B0152AC5EFF4005052EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		48DF1F51777A7DF5F823C499 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C88922E4F746735CBB7F644E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Seraphic_Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DEF4B0062AC5EFF3005052EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEF4B0122AC5EFF4005052EF /* ViewController.swift in Sources */,
+				DEC4AF6B2AC80978003A35EE /* ExtensionUIView.swift in Sources */,
+				DEC4AF7F2AC866A7003A35EE /* ApiManager.swift in Sources */,
+				DEF4B0122AC5EFF4005052EF /* MapViewController.swift in Sources */,
 				DEF4B00E2AC5EFF4005052EF /* AppDelegate.swift in Sources */,
+				DEC4AF792AC856D3003A35EE /* CustomInfoWindow.swift in Sources */,
 				DEF4B0102AC5EFF4005052EF /* SceneDelegate.swift in Sources */,
+				DEC4AF602AC5F3EF003A35EE /* Constant.swift in Sources */,
+				DEC4AF672AC74665003A35EE /* ShowDriverCollectionViewCell.swift in Sources */,
+				DEC4AF7C2AC86595003A35EE /* EmployeeData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +414,13 @@
 		};
 		DEF4B01F2AC5EFF5005052EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE497552A28B8F7B01CFB0A2 /* Pods-Seraphic_Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Seraphic_Demo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -309,11 +443,13 @@
 		};
 		DEF4B0202AC5EFF5005052EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8A55CDF9DF7EF91D41347E /* Pods-Seraphic_Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Seraphic_Demo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
