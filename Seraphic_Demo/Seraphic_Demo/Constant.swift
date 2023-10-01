@@ -7,5 +7,5 @@
 
 import Foundation
 
-let googleMapKey = "AIzaSyAtwl0WrRYN7pbxjBynlH_lQ8kczqYMTKI"
+let googleMapKey = ""
 let getEmployeeData = "https://dummy.restapiexample.com/api/v1/employees"
