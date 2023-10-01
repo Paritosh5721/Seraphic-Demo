@@ -33,7 +33,7 @@
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOJ-sl-HNX">
-                                <rect key="frame" x="336" y="594" width="72" height="62"/>
+                                <rect key="frame" x="336" y="597" width="72" height="62"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="navigateToIcon">
@@ -42,9 +42,12 @@
                                 <buttonConfiguration key="configuration" style="plain" image="navigateToIcon">
                                     <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="navigateToGoogleMaps:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eHy-2G-waP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-OB-gIp">
-                                <rect key="frame" x="20" y="594" width="72" height="62"/>
+                                <rect key="frame" x="20" y="597" width="72" height="62"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="navigationIcon">
@@ -53,10 +56,13 @@
                                 <buttonConfiguration key="configuration" style="plain" image="navigationIcon">
                                     <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="currentLocationBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zcp-fP-I7A"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Food trucks within 100 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZQ-zb-EOE">
-                                <rect key="frame" x="20.000000000000014" y="671" width="244.33333333333337" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <rect key="frame" x="20" y="674" width="259.33333333333331" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -139,7 +145,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jwc-fP-v7G" secondAttribute="trailing" constant="10" id="aeD-4g-Uit"/>
                             <constraint firstItem="eD9-ih-aDt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bCT-OU-94P"/>
                             <constraint firstItem="eD9-ih-aDt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bha-xI-QD0"/>
-                            <constraint firstItem="iMU-9u-Hxw" firstAttribute="leading" secondItem="fZQ-zb-EOE" secondAttribute="trailing" constant="20" id="eYr-fi-5oa"/>
+                            <constraint firstItem="iMU-9u-Hxw" firstAttribute="leading" secondItem="fZQ-zb-EOE" secondAttribute="trailing" constant="5" id="eYr-fi-5oa"/>
                             <constraint firstItem="Jwc-fP-v7G" firstAttribute="top" secondItem="iMU-9u-Hxw" secondAttribute="bottom" id="fOr-xR-IZf"/>
                             <constraint firstItem="Jwc-fP-v7G" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="5" id="kDD-78-xuc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iMU-9u-Hxw" secondAttribute="trailing" constant="10" id="kPl-Fg-giY"/>
