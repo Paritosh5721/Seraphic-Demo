@@ -30,6 +30,8 @@ class ShowDriverCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var driverEta: UILabel!
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.configureUI()

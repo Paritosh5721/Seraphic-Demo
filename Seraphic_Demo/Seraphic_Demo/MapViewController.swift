@@ -7,11 +7,11 @@
 
 import UIKit
 import GoogleMaps
-
+import GooglePlaces
 
 // MARK: - MapViewController
 
-class MapViewController: UIViewController , UISearchBarDelegate{
+class MapViewController: UIViewController {
     
     // MARK: Outlets
     
@@ -23,8 +23,8 @@ class MapViewController: UIViewController , UISearchBarDelegate{
     
     @IBOutlet weak var headerTitle: UILabel!
     
-
-
+    
+    
     @IBOutlet weak var pageControl: UIPageControl!
     
     
@@ -39,7 +39,17 @@ class MapViewController: UIViewController , UISearchBarDelegate{
     
     let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7265, longitude: 76.7589))
     var markers: [GMSMarker] = []
-    
+    var placesClient: GMSPlacesClient!
+    let suggestionsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
+        tableView.isHidden = true
+        return tableView
+    }()
+    var autocompleteSuggestions: [String] = []
+    var selectedSuggestion: String?
+    var distance = [String]()
     
     // MARK: Lifecycle
     
@@ -49,19 +59,19 @@ class MapViewController: UIViewController , UISearchBarDelegate{
         truckCollectionView.delegate = self
         truckCollectionView.isPagingEnabled = true
         searchField.delegate = self
+        placesClient = GMSPlacesClient.shared()
         configureUI()
         fetchDataFromApi()
         searchFieldUI()
+        view.addSubview(suggestionsTableView)
+        configureTableViewConstraints()
+        suggestionsTableView.delegate = self
+        suggestionsTableView.dataSource = self
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         scrollToFirstItem()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            if let firstMarker = self.markers.first {
-//                self.mapView(self.googleMapView, markerInfoWindow: firstMarker)
-//            }
-//        }
-
+        
     }
     
     // MARK: UI Setup
@@ -82,13 +92,34 @@ class MapViewController: UIViewController , UISearchBarDelegate{
         pageControl.layoutIfNeeded()
         pageControl.addTarget(self, action: #selector(pageControlValueChanged(_:)), for: .valueChanged)
     }
-    
+    func configureTableViewConstraints(){
+        NSLayoutConstraint.activate([
+            suggestionsTableView.topAnchor.constraint(equalTo: searchField.bottomAnchor),
+            suggestionsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: 20),
+            suggestionsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: -20),
+            suggestionsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    func calculateDistance(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) -> Double {
+        let sourceLocation = CLLocation(latitude: source.latitude, longitude: source.longitude)
+        let destinationLocation = CLLocation(latitude: destination.latitude, longitude: destination.longitude)
+        
+        let distanceInMeters = sourceLocation.distance(from: destinationLocation)
+        
+        let distanceInKilometers = distanceInMeters / 1000.0
+        
+        return distanceInKilometers
+    }
     private func setupCollectionView() {
         truckCollectionView.dataSource = self
         truckCollectionView.delegate = self
         truckCollectionView.isPagingEnabled = true
     }
-    
+    func reloadSuggestionsTableView() {
+        suggestionsTableView.reloadData()
+        suggestionsTableView.isHidden = autocompleteSuggestions.isEmpty
+        
+    }
     func registerCollectionCell(){
         let nib = UINib(nibName: "ShowDriverCollectionViewCell", bundle: nil)
         truckCollectionView.register(nib, forCellWithReuseIdentifier: "ShowDriverCollectionViewCell")
@@ -114,21 +145,21 @@ class MapViewController: UIViewController , UISearchBarDelegate{
     
     @IBAction func currentLocationBtnTapped(_ sender: UIButton) {
         let targetLocation = CLLocationCoordinate2D(latitude: 30.7265, longitude: 76.7589)
-        googleMapView.animate(to: GMSCameraPosition.camera(withTarget: targetLocation, zoom: 17))
+        googleMapView.animate(to: GMSCameraPosition.camera(withTarget: targetLocation, zoom: 12))
     }
     
     
     @IBAction func navigateToGoogleMaps(_ sender: UIButton) {
         let latitude = "30.7265"
-                let longitude = "76.7589"
-                let url = "comgooglemaps://?center=\(latitude),\(longitude)&zoom=17"
-
-                if UIApplication.shared.canOpenURL(URL(string: url)!) {
-                    UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
-                } else {
-                    let webURL = "https://www.google.com/maps/place/\(latitude),\(longitude)"
-                    UIApplication.shared.open(URL(string: webURL)!, options: [:], completionHandler: nil)
-                }
+        let longitude = "76.7589"
+        let url = "comgooglemaps://?center=\(latitude),\(longitude)&zoom=12"
+        
+        if UIApplication.shared.canOpenURL(URL(string: url)!) {
+            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        } else {
+            let webURL = "https://www.google.com/maps/place/\(latitude),\(longitude)"
+            UIApplication.shared.open(URL(string: webURL)!, options: [:], completionHandler: nil)
+        }
     }
     
     
@@ -136,9 +167,10 @@ class MapViewController: UIViewController , UISearchBarDelegate{
     
     private func setupMarkers() {
         markers.append(contentsOf: [GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7265, longitude: 76.7589)),
-                                    GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7275, longitude: 76.7599)),
-                                    GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7255, longitude: 76.7579)),
-                                    GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7260, longitude: 76.7574))])
+                                    GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7730, longitude: 76.7935)),
+                                    GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7421, longitude: 76.8188)),
+                                    GMSMarker(position: CLLocationCoordinate2D(latitude: 30.7045, longitude: 76.7843))])
+        self.distance = Array(repeating: "", count: self.markers.count)
         updateMapMarker()
     }
     
@@ -153,7 +185,7 @@ class MapViewController: UIViewController , UISearchBarDelegate{
                 self.truckCollectionView.reloadData()
                 self.nightMode()
                 self.googleMapView.selectedMarker = self.markers[0]
-//                self.updateMapMarker()
+                //                self.updateMapMarker()
                 //                self.handleEmployeeData()
             case .failure(let error):
                 print("Error fetching employee data: \(error)")
@@ -166,17 +198,8 @@ class MapViewController: UIViewController , UISearchBarDelegate{
     func searchFieldUI(){
         searchField.layer.cornerRadius = 10.0
         searchField.placeholder = "Search"
-        let dropIconImage = UIImage(named: "dropLocationImage")
-        searchField.setImage(dropIconImage, for: .search, state: .normal)
-        searchField.showsBookmarkButton = true
-        searchField.setImage(UIImage(systemName: "arrow.triangle.2.circlepath"), for: .bookmark, state: .normal)
-        
-        // Customize the appearance of the search bar
         searchField.searchBarStyle = .default
         searchField.tintColor = .clear
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     }
     
 }
@@ -186,22 +209,14 @@ class MapViewController: UIViewController , UISearchBarDelegate{
 extension MapViewController : GMSMapViewDelegate{
     func nightMode(){
         // Set up the initial camera position
-        let camera = GMSCameraPosition.camera(withLatitude: 30.7265, longitude: 76.7589, zoom: 17)
-        
-        // Create a GMSMapView with the specified camera position
-        //        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        let camera = GMSCameraPosition.camera(withLatitude: 30.7265, longitude: 76.7589, zoom: 12)
         googleMapView.camera = camera
-        // Set the map type to satellite
         googleMapView.mapType = .normal
         // Enable night mode
         if let nightTimeStylePath = Bundle.main.path(forResource: "NightStyle", ofType: "json") {
             do {
-                // Get the JSON data from the file
                 let nightTimeStyleData = try Data(contentsOf: URL(fileURLWithPath: nightTimeStylePath))
-                
-                // Convert the data to a string
                 if let nightTimeStyle = String(data: nightTimeStyleData, encoding: .utf8) {
-                    // Set the map style
                     googleMapView.mapStyle = try GMSMapStyle(jsonString: nightTimeStyle)
                     googleMapView.clear()
                 } else {
@@ -224,7 +239,6 @@ extension MapViewController : GMSMapViewDelegate{
                 if i == 0{
                     googleMapView.selectedMarker = markers[i]
                 }
-                
             }
         }else{
             self.marker.title = "Paritosh"
@@ -235,33 +249,25 @@ extension MapViewController : GMSMapViewDelegate{
             self.marker.icon = drawImageWithProfilePic(pp: ppimage ?? UIImage(), image: dropImage ?? UIImage())//UIImage(named: "userIcon")
         }
         googleMapView.delegate = self
-        
     }
     
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        
         // Close the current info window
         currentInfoWindow?.removeFromSuperview()
-        
         let infoWindow = CustomInfoWindow(frame: CGRect(x: 0, y: 0, width: 120, height: 30))
         infoWindow.backgroundColor = .white
         if let name = marker.title {
             infoWindow.configure(withName: name)
         }
-        
         // Keep a reference to the current info window
         currentInfoWindow = infoWindow
-        
         if let index = markers.firstIndex(of: marker) {
-            // Update the selected marker index
             selectedMarkerIndex = index
-            
             // Update the collection view to show the corresponding cell
             let indexPath = IndexPath(item: index, section: 0)
             truckCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-        
         return infoWindow
     }
     
@@ -294,14 +300,12 @@ extension MapViewController : GMSMapViewDelegate{
         }
         return image ?? UIImage()
     }
+    /// Update the markers
     func updateMapMarker() {
         guard selectedMarkerIndex >= 0, selectedMarkerIndex < markers.count else {
             return
         }
-        // Get the selected marker
         let selectedMarker = markers[selectedMarkerIndex]
-        // Optionally, update other marker properties based on the selected index
-        // Refresh the map view
         googleMapView.animate(toLocation: selectedMarker.position)
         if mapView(googleMapView, markerInfoWindow: selectedMarker) != nil {
             let infoWindow = CustomInfoWindow(frame: CGRect(x: 0, y: 0, width: 120, height: 30))
@@ -328,7 +332,7 @@ extension MapViewController : UICollectionViewDelegate , UICollectionViewDataSou
         cell.driverName.text = "Driver's Name : \(employee.employeeName)"
         cell.driverLocation.text = "Driver's Salary : \(employee.employeeSalary)"
         cell.driverEta.text = "Driver's Age : \(employee.employeeAge)"
-        
+        cell.distanceLbl.text = "Driver Distance : \(distance[indexPath.row])"
         
         return cell
     }
@@ -373,73 +377,241 @@ extension MapViewController : UICollectionViewDelegate , UICollectionViewDataSou
     }
     
 }
-extension MapViewController {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let filter = GMSAutocompleteFilter()
-        filter.type = .geocode
-
-        placesClient.findAutocompletePredictions(fromQuery: searchText, filter: filter, callback: { (results, error) in
+//MARK: Search Field changes
+extension MapViewController : UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let query = searchBar.text else { return }
+        
+        // Construct the request URL
+        let apiKey = googleMapKey
+        let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let baseURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
+        let input = "input=\(encodedQuery)"
+        let key = "key=\(apiKey)"
+        let urlString = "\(baseURL)?\(input)&\(key)"
+        
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+        
+        // Create and send the request
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
-                print("Autocomplete error: \(error.localizedDescription)")
+                print("Request error: \(error.localizedDescription)")
+                // Handle the error
                 return
             }
-
-            if let results = results {
-                // Handle autocomplete predictions (results)
-                // You can display these as suggestions in your UI
-                for result in results {
-                    print("Place ID: \(result.placeID), Description: \(result.attributedFullText.string)")
+            
+            if let data = data {
+                do {
+                    // Parse the JSON response
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    
+                    // Extract and handle predictions
+                    if let predictions = json?["predictions"] as? [[String: Any]] {
+                        for prediction in predictions {
+                            if let description = prediction["description"] as? String {
+                                print("Place Prediction: \(description)")
+                                self.handlePlacePrediction(prediction)
+                            }
+                        }
+                    }
+                } catch {
+                    print("JSON parsing error: \(error.localizedDescription)")
+                    // Handle the parsing error
                 }
             }
-        })
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // Perform the search and handle the selected place
+        }
+        
+        task.resume()
         searchBar.resignFirstResponder()
-
+    }
+    func handlePlacePrediction(_ prediction: [String: Any]) {
+        guard
+            let placeID = prediction["place_id"] as? String,
+            let apiKey = googleMapKey as? String else {
+            print("Invalid place prediction data")
+            return
+        }
+        
+        // Construct the request URL to get place details
+        let placeDetailURL = "https://maps.googleapis.com/maps/api/place/details/json?place_id=\(placeID)&key=\(apiKey)"
+        
+        guard let url = URL(string: placeDetailURL) else {
+            print("Invalid URL for place details")
+            return
+        }
+        
+        // Create and send the request to get place details
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Request error: \(error.localizedDescription)")
+                // Handle the error
+                return
+            }
+            
+            if let data = data {
+                do {
+                    // Parse the JSON response
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    
+                    // Extract and handle place details
+                    if let result = json?["result"] as? [String: Any],
+                       let geometry = result["geometry"] as? [String: Any],
+                       let location = geometry["location"] as? [String: Any],
+                       let lat = location["lat"] as? Double,
+                       let lng = location["lng"] as? Double {
+                        let selectedLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                        for i in 0 ..< self.markers.count {
+                            let markerLocation = self.markers[i].position
+                            let rawDistance = "\(self.calculateDistance(from: selectedLocation, to: markerLocation))"
+                            let formatter = NumberFormatter()
+                            formatter.minimumFractionDigits = 0
+                            formatter.maximumFractionDigits = 2
+                            formatter.numberStyle = .decimal
+                            let roundedDistance = formatter.string(from: Double(rawDistance) as? NSNumber ?? 0.0)
+                            self.distance[i] = "\(roundedDistance ?? "") km"
+                            print("Distance to marker: \(roundedDistance) km")
+                        }
+                        // Place a marker on the map
+                        DispatchQueue.main.async {
+                            self.placeMarkerOnMap(latitude: lat, longitude: lng)
+                        }
+                    }
+                } catch {
+                    print("JSON parsing error: \(error.localizedDescription)")
+                }
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
+    ///Function to place a marker on the map
+    func placeMarkerOnMap(latitude: Double, longitude: Double) {
+        let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let marker = GMSMarker(position: position)
+        marker.title = "Current Location"
+        googleMapView.selectedMarker = marker
+        marker.map = googleMapView
+        googleMapView.animate(to: GMSCameraPosition.camera(withTarget: position, zoom: 12))
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        fetchAutocompleteSuggestions(for: searchText)
+    }
+    func fetchAutocompleteSuggestions(for query: String) {
+        
         let filter = GMSAutocompleteFilter()
-        filter.type = .geocode
-
-        placesClient.findAutocompletePredictions(fromQuery: searchBar.text ?? "", filter: filter, callback: { (results, error) in
+        filter.type = .address
+        
+        placesClient.findAutocompletePredictions(fromQuery: query, filter: filter, sessionToken: nil) { (results, error) in
             if let error = error {
                 print("Autocomplete error: \(error.localizedDescription)")
                 return
             }
-
-            if let results = results, let firstPlace = results.first {
-                // Handle the selected place
-                self.handleSelectedPlace(placeID: firstPlace.placeID)
-            }
-        })
+            let suggestions = results?.compactMap { $0.attributedFullText.string } ?? []
+            self.autocompleteSuggestions = suggestions
+            self.reloadSuggestionsTableView()
+        }
     }
-
-    func handleSelectedPlace(placeID: String) {
-        placesClient.lookUpPlaceID(placeID, callback: { (place, error) in
+    
+    func updateMapWithSelectedLocation(location: String) {
+        fetchPlaceDetails(for: location)
+    }
+    
+    // Function to fetch place details using Google Places API
+    func fetchPlaceDetails(for location: String) {
+        guard let apiKey = googleMapKey as? String  else {
+            print("Google Maps API key is missing.")
+            return
+        }
+        
+        let baseURL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+        let query = "query=\(location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
+        let key = "key=\(apiKey)"
+        let urlString = "\(baseURL)?\(query)&\(key)"
+        
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL for place details")
+            return
+        }
+        
+        // Create and send the request to get place details
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
-                print("Place lookup error: \(error.localizedDescription)")
+                print("Request error: \(error.localizedDescription)")
+                // Handle the error
                 return
             }
-
-            if let place = place {
-                // Handle the details of the selected place
-                print("Place name: \(place.name ?? "")")
-                print("Place coordinate: \(place.coordinate)")
-                
-                // Navigate to the selected location and show a marker
-                self.navigateToLocation(coordinate: place.coordinate, placeName: place.name)
+            
+            if let data = data {
+                do {
+                    // Parse the JSON response
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    
+                    // Extract and handle place details
+                    if let results = json?["results"] as? [[String: Any]], let firstResult = results.first,
+                       let geometry = firstResult["geometry"] as? [String: Any],
+                       let location = geometry["location"] as? [String: Any],
+                       let lat = location["lat"] as? Double,
+                       let lng = location["lng"] as? Double {
+                        let selectedLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                        for i in 0 ..< self.markers.count {
+                            let markerLocation = self.markers[i].position
+                            let rawDistance = "\(self.calculateDistance(from: selectedLocation, to: markerLocation))"
+                            let formatter = NumberFormatter()
+                            formatter.minimumFractionDigits = 0
+                            formatter.maximumFractionDigits = 2
+                            formatter.numberStyle = .decimal
+                            let roundedDistance = formatter.string(from: Double(rawDistance) as? NSNumber ?? 0.0)
+                            self.distance[i] = "\(roundedDistance ?? "") km"
+                            print("Distance to marker: \(roundedDistance ?? "") km")
+                        }
+                        // Place a marker on the map
+                        DispatchQueue.main.async {
+                            self.placeMarkerOnMap(latitude: lat, longitude: lng)
+                            self.truckCollectionView.reloadData()
+                        }
+                    }
+                } catch {
+                    print("JSON parsing error: \(error.localizedDescription)")
+                }
             }
-        })
+        }
+        
+        task.resume()
     }
-
-    func navigateToLocation(coordinate: CLLocationCoordinate2D, placeName: String?) {
-        // Center the map and show a marker at the selected location
-        let camera = GMSCameraPosition.camera(withTarget: coordinate, zoom: 17)
-        googleMapView.camera = camera
-
-        // Add a marker
-        let marker = GMSMarker(position: coordinate)
-        marker.title = placeName
-        marker.map = googleMapView
+    
+}
+extension MapViewController : UITableViewDelegate , UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return autocompleteSuggestions.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = autocompleteSuggestions[indexPath.row]
+        return cell
+    }
+    
+    // Implement UITableViewDelegate methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Handle the selection of a suggestion
+        selectedSuggestion = autocompleteSuggestions[indexPath.row]
+        print("Selected suggestion: \(selectedSuggestion ?? "")")
+        searchField.text = selectedSuggestion
+        if let selectedLocation = selectedSuggestion {
+            updateMapWithSelectedLocation(location: selectedLocation)
+        }
+        suggestionsTableView.isHidden = true
+        autocompleteSuggestions.removeAll()
+        searchField.resignFirstResponder()
+        reloadSuggestionsTableView()
+        truckCollectionView.reloadData()
+    }
+    
+    
 }
