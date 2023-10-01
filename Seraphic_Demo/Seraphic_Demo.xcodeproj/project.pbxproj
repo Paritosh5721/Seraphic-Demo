@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A2045F7DD524632D9EC7EBE /* Pods_Seraphic_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99ADF3F7DBD522AB004CB467 /* Pods_Seraphic_Demo.framework */; };
+		446F2C99F27FB1D857E6B70D /* Pods_Seraphic_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BE45B290A26D83B82972BB /* Pods_Seraphic_Demo.framework */; };
 		DEC4AF602AC5F3EF003A35EE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF5F2AC5F3EF003A35EE /* Constant.swift */; };
 		DEC4AF632AC60070003A35EE /* NightStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC4AF622AC60070003A35EE /* NightStyle.json */; };
 		DEC4AF672AC74665003A35EE /* ShowDriverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4AF652AC74665003A35EE /* ShowDriverCollectionViewCell.swift */; };
@@ -25,8 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B8A55CDF9DF7EF91D41347E /* Pods-Seraphic_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraphic_Demo.release.xcconfig"; path = "Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo.release.xcconfig"; sourceTree = "<group>"; };
-		99ADF3F7DBD522AB004CB467 /* Pods_Seraphic_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seraphic_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		340FDAA9608B43B3EC2B17A1 /* Pods-Seraphic_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraphic_Demo.debug.xcconfig"; path = "Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		B5BE45B290A26D83B82972BB /* Pods_Seraphic_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seraphic_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC4AF5F2AC5F3EF003A35EE /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DEC4AF622AC60070003A35EE /* NightStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NightStyle.json; sourceTree = "<group>"; };
 		DEC4AF652AC74665003A35EE /* ShowDriverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDriverCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		DEF4B0162AC5EFF5005052EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEF4B0192AC5EFF5005052EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEF4B01B2AC5EFF5005052EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE497552A28B8F7B01CFB0A2 /* Pods-Seraphic_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraphic_Demo.debug.xcconfig"; path = "Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		E164F91A51215371200D4638 /* Pods-Seraphic_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraphic_Demo.release.xcconfig"; path = "Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,28 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2045F7DD524632D9EC7EBE /* Pods_Seraphic_Demo.framework in Frameworks */,
+				446F2C99F27FB1D857E6B70D /* Pods_Seraphic_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		043775A11AEAFA5F997CB8BD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				99ADF3F7DBD522AB004CB467 /* Pods_Seraphic_Demo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		55A493678CBEDD16EEE47CE2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FE497552A28B8F7B01CFB0A2 /* Pods-Seraphic_Demo.debug.xcconfig */,
-				2B8A55CDF9DF7EF91D41347E /* Pods-Seraphic_Demo.release.xcconfig */,
+				340FDAA9608B43B3EC2B17A1 /* Pods-Seraphic_Demo.debug.xcconfig */,
+				E164F91A51215371200D4638 /* Pods-Seraphic_Demo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B8E637A02E1F765530358DAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE45B290A26D83B82972BB /* Pods_Seraphic_Demo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DEC4AF642AC7460B003A35EE /* View */ = {
@@ -115,7 +115,7 @@
 				DEF4B00C2AC5EFF4005052EF /* Seraphic_Demo */,
 				DEF4B00B2AC5EFF4005052EF /* Products */,
 				55A493678CBEDD16EEE47CE2 /* Pods */,
-				043775A11AEAFA5F997CB8BD /* Frameworks */,
+				B8E637A02E1F765530358DAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,11 +154,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEF4B01E2AC5EFF5005052EF /* Build configuration list for PBXNativeTarget "Seraphic_Demo" */;
 			buildPhases = (
-				C88922E4F746735CBB7F644E /* [CP] Check Pods Manifest.lock */,
+				0D5D2CEE69E0952FC3540BFF /* [CP] Check Pods Manifest.lock */,
 				DEF4B0062AC5EFF3005052EF /* Sources */,
 				DEF4B0072AC5EFF3005052EF /* Frameworks */,
 				DEF4B0082AC5EFF3005052EF /* Resources */,
-				48DF1F51777A7DF5F823C499 /* [CP] Copy Pods Resources */,
+				FB9FEC328E13839775621692 /* [CP] Embed Pods Frameworks */,
+				0AE11E45A58D16676CBB8617 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,7 +219,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48DF1F51777A7DF5F823C499 /* [CP] Copy Pods Resources */ = {
+		0AE11E45A58D16676CBB8617 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,7 +236,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C88922E4F746735CBB7F644E /* [CP] Check Pods Manifest.lock */ = {
+		0D5D2CEE69E0952FC3540BFF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,6 +256,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB9FEC328E13839775621692 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seraphic_Demo/Pods-Seraphic_Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,7 +432,7 @@
 		};
 		DEF4B01F2AC5EFF5005052EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE497552A28B8F7B01CFB0A2 /* Pods-Seraphic_Demo.debug.xcconfig */;
+			baseConfigurationReference = 340FDAA9608B43B3EC2B17A1 /* Pods-Seraphic_Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -428,6 +446,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,7 +462,7 @@
 		};
 		DEF4B0202AC5EFF5005052EF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B8A55CDF9DF7EF91D41347E /* Pods-Seraphic_Demo.release.xcconfig */;
+			baseConfigurationReference = E164F91A51215371200D4638 /* Pods-Seraphic_Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -457,6 +476,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

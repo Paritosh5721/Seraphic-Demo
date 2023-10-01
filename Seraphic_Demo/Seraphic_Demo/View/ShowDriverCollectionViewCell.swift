@@ -44,5 +44,10 @@ class ShowDriverCollectionViewCell: UICollectionViewCell {
         self.DistanceTimeView.layer.cornerRadius = 17.0
         self.DetailsView.backgroundColor = .white
         self.DetailsView.layer.cornerRadius = 8.0
+        self.driverName.font = UIFont.systemFont(ofSize: 14)
+        self.driverLocation.font = UIFont.systemFont(ofSize: 13)
+        self.driverLocation.textColor = UIColor.lightGray
+        self.driverEta.font = UIFont.systemFont(ofSize: 13)
+        self.driverEta.textColor = UIColor.lightGray
     }
 }

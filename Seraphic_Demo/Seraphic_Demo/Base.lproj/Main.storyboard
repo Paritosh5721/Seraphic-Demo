@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,15 +22,37 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                             </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mGh-N6-fHx">
+                                <rect key="frame" x="20" y="140" width="388" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Z1H-Yq-eFX"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rt4-Qq-Nu3"/>
+                                </connections>
+                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOJ-sl-HNX">
-                                <rect key="frame" x="336" y="589" width="72" height="62"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="navigateToIcon"/>
+                                <rect key="frame" x="336" y="594" width="72" height="62"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="navigateToIcon">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" image="navigateToIcon">
+                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-OB-gIp">
-                                <rect key="frame" x="20" y="589" width="72" height="62"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="navigationIcon"/>
+                                <rect key="frame" x="20" y="594" width="72" height="62"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="navigationIcon">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" image="navigationIcon">
+                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Food trucks within 100 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZQ-zb-EOE">
                                 <rect key="frame" x="20.000000000000014" y="671" width="244.33333333333337" height="21"/>
@@ -101,15 +124,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mGh-N6-fHx" secondAttribute="trailing" constant="20" id="8gA-6I-8gh"/>
                             <constraint firstItem="fZQ-zb-EOE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ESM-Tt-u7z"/>
-                            <constraint firstItem="fZQ-zb-EOE" firstAttribute="top" secondItem="3dH-OB-gIp" secondAttribute="bottom" constant="20" id="FEW-Nh-u1E"/>
+                            <constraint firstItem="fZQ-zb-EOE" firstAttribute="top" secondItem="3dH-OB-gIp" secondAttribute="bottom" constant="15" id="FEW-Nh-u1E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fOJ-sl-HNX" secondAttribute="trailing" constant="20" id="Fw5-r6-aaz"/>
                             <constraint firstItem="3dH-OB-gIp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Lkg-x3-Yxa"/>
+                            <constraint firstItem="mGh-N6-fHx" firstAttribute="top" secondItem="KXH-Ug-2Oc" secondAttribute="bottom" constant="30" id="OCv-tB-wEn"/>
                             <constraint firstItem="KXH-Ug-2Oc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OjV-Ao-xe8"/>
                             <constraint firstItem="eD9-ih-aDt" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="Pon-fK-5yH"/>
+                            <constraint firstItem="mGh-N6-fHx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SCr-AM-Zh0"/>
                             <constraint firstItem="KXH-Ug-2Oc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SFU-ni-hJM"/>
                             <constraint firstItem="Jwc-fP-v7G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="TwB-4P-YB1"/>
-                            <constraint firstItem="fZQ-zb-EOE" firstAttribute="top" secondItem="fOJ-sl-HNX" secondAttribute="bottom" constant="20" id="YwQ-H2-Evs"/>
+                            <constraint firstItem="fZQ-zb-EOE" firstAttribute="top" secondItem="fOJ-sl-HNX" secondAttribute="bottom" constant="15" id="YwQ-H2-Evs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jwc-fP-v7G" secondAttribute="trailing" constant="10" id="aeD-4g-Uit"/>
                             <constraint firstItem="eD9-ih-aDt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bCT-OU-94P"/>
                             <constraint firstItem="eD9-ih-aDt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bha-xI-QD0"/>
@@ -126,12 +152,13 @@
                         <outlet property="googleMapView" destination="eD9-ih-aDt" id="552-dw-gXz"/>
                         <outlet property="headerTitle" destination="kiS-Zf-lWv" id="CuW-kb-Wd7"/>
                         <outlet property="pageControl" destination="iMU-9u-Hxw" id="Omz-0q-Int"/>
+                        <outlet property="searchField" destination="mGh-N6-fHx" id="4p2-Gg-XeM"/>
                         <outlet property="truckCollectionView" destination="Jwc-fP-v7G" id="eBH-Ba-gIG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16.030534351145036" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="-16.822429906542055" y="3.2397408207343417"/>
         </scene>
     </scenes>
     <resources>
